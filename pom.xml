@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.dirent.littlehelper</groupId>
+  <artifactId>littlehelper</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1</version>
+  <description>Little Helper</description>
+  <build>
+    <finalName>littlehelper</finalName>
+    <plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.5</source>
+				<target>1.5</target>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
+  <dependencies>
+	<dependency>
+		<groupId>org.apache.tapestry</groupId>
+		<artifactId>tapestry-framework</artifactId>
+		<version>4.1.1-SNAPSHOT</version>
+		<exclusions>
+			<exclusion>
+			  <groupId>javax.servlet</groupId>
+			  <artifactId>servlet-api</artifactId>
+			</exclusion>
+		</exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tapestry</groupId>
+      <artifactId>tapestry-contrib</artifactId>
+      <version>4.1.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tapestry</groupId>
+      <artifactId>tapestry-annotations</artifactId>
+      <version>4.1.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>
