@@ -4,8 +4,9 @@
 	
 <application name="Little Helper">
 
-  <meta key="org.apache.tapestry.page-class-packages" value="de.dirent.littlehelper.pages"/>
+  	<meta key="org.apache.tapestry.page-class-packages" value="de.dirent.littlehelper.pages"/>
+	<meta key="org.apache.tapestry.template-encoding" value="UTF-8"/>
   
-  <library id="contrib" specification-path="classpath:/org/apache/tapestry/contrib/Contrib.library"/>
+  	<library id="contrib" specification-path="classpath:/org/apache/tapestry/contrib/Contrib.library"/>
   
 </application>

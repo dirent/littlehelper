@@ -48,9 +48,26 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 20px;
 }
 
-p {
+p, div.controlpanel {
 	margin: 15px 20px;
 }
+
+div.resultpanel {
+	margin: 15px 20px;
+	width: 75%;
+	height: 75px;
+	overflow: auto;
+}
+
+
+.infomessage {
+	color: #0000FF;
+}
+
+.errormessage {
+	color: #FF0000;
+}
+
 
 a:link {
 	color: #ce131a;

@@ -55,8 +55,13 @@ public class Kreditrechner {
     
     private int count; 
     
-    public Kreditrechner( double start, double zins, double tilgung ) {
+    public Kreditrechner( double start, double zins, double tilgung ) throws IllegalArgumentException {
         
+    	if( start<=0  ||  zins <=0  ||  tilgung<=0 ) {
+    		
+    		throw new IllegalArgumentException( "All parameters must be positive." );
+    	}
+    	
         this.start = start;
         this.zins = zins;
         this.tilgung = tilgung;
