@@ -49,7 +49,7 @@
 </p>
 
 <div class="resultpanel" jwcid=@Any style="ognl: !showResult ? 'display:none;' : ''">
-<span jwcid="@Foreach" source="ognl: kontoauszug" value="ognl: zwischenbetrag" index="ognl: monatIndex">
+<span jwcid="@For" source="ognl: kontoauszug" value="ognl: zwischenbetrag" index="ognl: monatIndex">
 	<span jwcid="@If" condition="ognl: showResult">
 	Rest nach Zahlung in <span jwcid="@Insert" value="ognl: convertToTime( monatIndex )">10/2006</span>: <span jwcid="@Insert" value="ognl: convertToCurrency(zwischenbetrag)">2345,90</span>€ <br />
 	</span>
