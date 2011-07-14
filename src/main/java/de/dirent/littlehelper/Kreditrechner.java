@@ -57,7 +57,7 @@ public class Kreditrechner {
     
     public Kreditrechner( double start, double zins, double tilgung ) throws IllegalArgumentException {
         
-    	if( start<=0  ||  zins <=0  ||  tilgung<=0 ) {
+    	if( start<=0  ||  zins <0  ||  tilgung<=0 ) {
     		
     		throw new IllegalArgumentException( "All parameters must be positive." );
     	}
