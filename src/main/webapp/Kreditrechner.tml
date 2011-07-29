@@ -1,0 +1,67 @@
+<t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+<body>
+<div id="wrap">
+
+<div id="header">
+<h1>Kreditrechner</h1>
+</div>
+
+<div id="navigation">
+<p><t:pagelink page="Index">Home</t:pagelink></p>
+</div>
+
+<div id="content">
+<p>Berechnung der Rate und Laufzeit eines Kredits</p>
+
+<p class="errormessage"><span jwcid="@Insert" value="ognl: errorMessage">Fehler</span></p>
+
+<div class="controlpanel">
+<form jwcid="@Form" listener="listener:calculate">
+<table>
+<tr>
+<td>Betrag:</td><td><input jwcid="@TextField" value="ognl:betrag" style="width:150px;"/></td>
+</tr>
+<tr>
+<td>Zins:</td><td><input jwcid="@TextField" value="ognl:zins" style="width:150px;"/></td>
+</tr>
+<tr>
+<td>Tilgung:</td><td><input jwcid="@TextField" value="ognl:tilgung" style="width:150px;"/></td>
+</tr>
+<tr>
+<td>zeige Zwischenschritte:</td><td><input jwcid="@Checkbox" value="ognl:showResult" /></td>
+</tr>
+</table>
+<input type="submit" jwcid="@Submit" value="Starte Berechnung" />
+</form>
+</div>
+
+<span jwcid="@If" condition="ognl: kreditrechner != null">
+<p class="infomessage">
+	Startbetrag: <span jwcid="@Insert" value="ognl: kreditrechner.start">100000</span>€; <br />
+	Zins: <span jwcid="@Insert" value="ognl: convertToPercent( kreditrechner.zins )">5.0</span> (<span jwcid="@Insert" value="ognl: convertToPercent( kreditrechner.tilgung )">1.0</span> Tilgung); <br />
+	Rate: <strong><span jwcid="@Insert" value="ognl: convertToCurrency( kreditrechner.rate )">Rate</span>€</strong> <br />
+</p>
+
+<t:if test="showResult"><div class="resultpanel">
+<span jwcid="@For" source="ognl: kontoauszug" value="ognl: zwischenbetrag" index="ognl: monatIndex">
+	<span jwcid="@If" condition="ognl: showResult">
+	Rest nach Zahlung in <span jwcid="@Insert" value="ognl: convertToTime( monatIndex )">10/2006</span>: <span jwcid="@Insert" value="ognl: convertToCurrency(zwischenbetrag)">2345,90</span>€ <br />
+	</span>
+</span>
+</div></t:if>
+
+<p>	
+	Kredit ist getilgt nach <span jwcid="@Insert" value="ognl: kreditrechner.count">vielen</span> Monaten (=<span jwcid="@Insert" value="ognl: convertToNumber(kreditrechner.count/12.0)">12</span> Jahre). <br />
+	Insgesamt bezahlt: <span jwcid="@Insert" value="ognl: convertToCurrency( kreditrechner.bezahlt )">10000</span> <br />
+</p>
+</span>
+</div>
+
+<div id="sidebar">
+<p><a jwcid="@PageLink" page="KreditrechnerPage">Reset</a></p>
+<p>controls</p>
+</div>
+
+</div>
+</body>
+</t:border>

@@ -1,0 +1,23 @@
+<t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+<body>
+<div id="wrap">
+
+<div id="header">
+<h1>Little Helper</h1>
+</div>
+
+<div id="navigation">
+<p><t:pagelink page="Kreditrechner">Kreditrechner</t:pagelink></p> 
+</div>
+
+<div id="content">
+<p>'Little Helper' ist eine Sammlung nützlicher kleiner Werkzeuge.</p>
+</div>
+
+<div id="sidebar">
+<p>controls</p>
+</div>
+
+</div>
+</body>
+</t:border>

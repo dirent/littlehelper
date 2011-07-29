@@ -5,37 +5,24 @@
 <web-app>
 
 	<display-name>Little Helper</display-name>
-  
-	<filter>
-        <filter-name>redirect</filter-name>
-        <filter-class>org.apache.tapestry.RedirectFilter</filter-class>
-        <init-param>
-          <param-name>redirect-path</param-name>
-          <param-value>/app</param-value>
-	   </init-param>
-	</filter>
+    
+    <distributable />
+
+    <!--  Tapestry 5 configuration -->
+    <context-param>
+        <param-name>tapestry.app-package</param-name>
+        <param-value>de.dirent.littlehelper</param-value>
+    </context-param>
+
+
+    <filter>
+        <filter-name>LittleHelper</filter-name>
+        <filter-class>org.apache.tapestry5.TapestryFilter</filter-class>
+    </filter>
 
     <filter-mapping>
-        <filter-name>redirect</filter-name>
-        <url-pattern>/</url-pattern>
+        <filter-name>LittleHelper</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-
-    <servlet>
-        <servlet-name>littlehelper</servlet-name>
-        <servlet-class>org.apache.tapestry.ApplicationServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
-    </servlet>
-
-    
-    <!-- Mapping for Tapestry -->
-    <servlet-mapping>
-        <servlet-name>littlehelper</servlet-name>
-        <url-pattern>/app</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>littlehelper</servlet-name>
-        <url-pattern>*.html</url-pattern>
-    </servlet-mapping>
-  
 </web-app>
