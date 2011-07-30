@@ -85,4 +85,11 @@ public class Kreditrechner {
 		nf.setMaximumFractionDigits(2);
 		return nf.format(value);
 	}
+	
+	public String convertToYear( int value ) {
+
+		NumberFormat nf = NumberFormat.getNumberInstance( resources.getLocale() );
+		nf.setMaximumFractionDigits(2);
+		return nf.format( (double) value/12.0 );
+	}
 }

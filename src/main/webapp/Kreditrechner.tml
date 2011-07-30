@@ -51,8 +51,8 @@
 </div>
 
 <p>	
-	Kredit ist getilgt nach <span jwcid="@Insert" value="ognl: kreditrechner.count">vielen</span> Monaten (=<span jwcid="@Insert" value="ognl: convertToNumber(kreditrechner.count/12.0)">12</span> Jahre). <br />
-	Insgesamt bezahlt: <span jwcid="@Insert" value="ognl: convertToCurrency( kreditrechner.bezahlt )">10000</span> <br />
+	Kredit ist getilgt nach ${kreditrechner.count} Monaten (=${convertToYear(kreditrechner.count)} Jahre). <br />
+	Insgesamt bezahlt: ${convertToCurrency( kreditrechner.bezahlt )}€ <br />
 </p>
 </t:if>
 </div>
