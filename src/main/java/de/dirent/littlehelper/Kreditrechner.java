@@ -68,13 +68,17 @@ public class Kreditrechner implements Serializable {
         this.start = start;
         this.zins = zins;
         this.tilgung = tilgung;
-        
+
+        init();
+    }
+    
+    private void init() {
+    	
         this.count = 0;
         this.rest = start;
         this.rate = Math.round( 100.0 * start * (zins+tilgung) / 12.0 ) / 100.0;
         this.bezahlt = 0.0;
     }
-    
     
 	public void tilge() {
 				
@@ -110,6 +114,8 @@ public class Kreditrechner implements Serializable {
     
     public void setStart( double start ) {
     	this.start = start;
+    	
+    	init();
     }
 
 

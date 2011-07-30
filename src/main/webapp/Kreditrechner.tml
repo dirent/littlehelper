@@ -37,18 +37,18 @@
 
 <t:if test="startKreditrechner">
 <p class="infomessage">
-	Startbetrag: <span jwcid="@Insert" value="ognl: kreditrechner.start">100000</span>€; <br />
-	Zins: <span jwcid="@Insert" value="ognl: convertToPercent( kreditrechner.zins )">5.0</span> (<span jwcid="@Insert" value="ognl: convertToPercent( kreditrechner.tilgung )">1.0</span> Tilgung); <br />
-	Rate: <strong><span jwcid="@Insert" value="ognl: convertToCurrency( kreditrechner.rate )">Rate</span>€</strong> <br />
+	Startbetrag: ${kreditrechner.start}€; <br />
+	Zins: ${convertToPercent( kreditrechner.zins )} (${convertToPercent( kreditrechner.tilgung )} Tilgung); <br />
+	Rate: <strong>${convertToCurrency( kreditrechner.rate )}€</strong> <br />
 </p>
 
-<t:if test="showResult"><div class="resultpanel">
+<div class="resultpanel" id="resultpanel" style="display:none;">
 <span jwcid="@For" source="ognl: kontoauszug" value="ognl: zwischenbetrag" index="ognl: monatIndex">
 	<span jwcid="@If" condition="ognl: showResult">
 	Rest nach Zahlung in <span jwcid="@Insert" value="ognl: convertToTime( monatIndex )">10/2006</span>: <span jwcid="@Insert" value="ognl: convertToCurrency(zwischenbetrag)">2345,90</span>€ <br />
 	</span>
 </span>
-</div></t:if>
+</div>
 
 <p>	
 	Kredit ist getilgt nach <span jwcid="@Insert" value="ognl: kreditrechner.count">vielen</span> Monaten (=<span jwcid="@Insert" value="ognl: convertToNumber(kreditrechner.count/12.0)">12</span> Jahre). <br />
