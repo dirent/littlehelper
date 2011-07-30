@@ -15,16 +15,10 @@ public class Kreditrechner {
 	private boolean startKreditrechner;
 	
 	@Property @Persist
-	private Double betrag;
-	
-	@Property @Persist
-	private Double zins;
-	
-	@Property @Persist
-	private Double tilgung;
-	
-	@Property @Persist
 	private boolean showResult;
+	
+	@Property @Persist
+	private de.dirent.littlehelper.Kreditrechner kreditRechner;
 	
 	@Property @Persist( PersistenceConstants.FLASH )
 	private String errorMessage;
@@ -32,13 +26,25 @@ public class Kreditrechner {
 	@SetupRender
 	public void init() {
 		
-		if( betrag == null ) betrag = 10000.0;
-		if( zins == null ) zins = 0.05;
-		if( tilgung == null ) tilgung = 0.01; 
+		if( kreditRechner == null ) {
+
+			reset();
+		}
+	}
+	
+	protected void reset() {
+		
+		kreditRechner = new de.dirent.littlehelper.Kreditrechner( 10000.0, 0.05, 0.01 );
+		startKreditrechner = false;
 	}
 	
 	public void onSuccessFromCalculate() {
 		
 		startKreditrechner = true;
+	}
+	
+	public void onActionFromReset() {
+		
+		reset();
 	}
 }

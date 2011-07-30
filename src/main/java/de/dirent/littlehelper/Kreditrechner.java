@@ -1,6 +1,7 @@
 package de.dirent.littlehelper;
 
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -8,9 +9,11 @@ import java.util.Calendar;
 import java.util.Locale;
 
 
-public class Kreditrechner {
+public class Kreditrechner implements Serializable {
 
+	private static final long serialVersionUID = 1923541436664902174L;
 
+	
 	public static void main(String[] args) {
 
 		boolean zeigeZwischenschritt = false;
@@ -104,10 +107,18 @@ public class Kreditrechner {
     public double getStart() {
         return start;
     }
+    
+    public void setStart( double start ) {
+    	this.start = start;
+    }
 
 
     public double getTilgung() {
         return tilgung;
+    }
+    
+    public void setTilgung( double tilgung ) {
+    	this.tilgung = tilgung;
     }
 
 
@@ -115,6 +126,9 @@ public class Kreditrechner {
         return zins;
     }
     
+    public void setZins( double zins ) {
+    	this.zins = zins;
+    }
     
     public int getCount() {
         return this.count;
