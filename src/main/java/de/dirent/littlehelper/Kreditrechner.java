@@ -72,7 +72,7 @@ public class Kreditrechner implements Serializable {
         init();
     }
     
-    private void init() {
+    public void init() {
     	
         this.count = 0;
         this.rest = start;

@@ -55,10 +55,26 @@ p, div.controlpanel {
 div.resultpanel {
 	margin: 15px 20px;
 	width: 75%;
-	height: 75px;
+	height: 100px;
 	overflow: auto;
 }
 
+div.resultpanel table {
+	width: 90%;
+	border: 1px solid blue;	
+}
+
+div.resultpanel th {
+	margin: 0;
+	padding: 3px;
+	border-bottom: 2px solid blue;
+}
+
+div.resultpanel td {
+	margin: 0;
+	padding: 3px;
+	border-bottom: 1px solid black;
+}
 
 .infomessage {
 	color: #0000FF;

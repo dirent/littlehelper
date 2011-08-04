@@ -1,5 +1,5 @@
-<t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
-<body>
+<t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+
 <div id="wrap">
 
 <div id="header">
@@ -19,13 +19,13 @@
 <t:form t:id="calculate">
 <table>
 <tr>
-<td>Betrag:</td><td><t:textfield value="kreditRechner.start" validate="min=1" style="width:150px;" /></td>
+<td>Betrag:</td><td><t:textfield value="kreditRechner.start" validate="min=1,required" style="width:150px;" /></td>
 </tr>
 <tr>
-<td>Zins:</td><td><t:textfield value="kreditRechner.zins" validate="min=0,max=1" style="width:150px;" /></td>
+<td>Zins:</td><td><t:textfield value="kreditRechner.zins" validate="min=0,max=1,required" style="width:150px;" /></td>
 </tr>
 <tr>
-<td>Tilgung:</td><td><t:textfield value="kreditRechner.tilgung" validate="min=0,max=1" style="width:150px;" /></td>
+<td>Tilgung:</td><td><t:textfield value="kreditRechner.tilgung" validate="min=0,max=1,required" style="width:150px;" /></td>
 </tr>
 <tr>
 <td>zeige Zwischenschritte:</td><td><t:checkbox value="showResult" /></td>
@@ -42,13 +42,14 @@
 	Rate: <strong>${convertToCurrency( kreditrechner.rate )}€</strong> <br />
 </p>
 
-<div class="resultpanel" id="resultpanel" style="display:none;">
-<span jwcid="@For" source="ognl: kontoauszug" value="ognl: zwischenbetrag" index="ognl: monatIndex">
-	<span jwcid="@If" condition="ognl: showResult">
-	Rest nach Zahlung in <span jwcid="@Insert" value="ognl: convertToTime( monatIndex )">10/2006</span>: <span jwcid="@Insert" value="ognl: convertToCurrency(zwischenbetrag)">2345,90</span>€ <br />
-	</span>
-</span>
-</div>
+<div class="resultpanel" id="resultpanel" style="display:none;"><table cellpadding="0" cellspacing="0">
+<tr><th>Monat</th><th>Restbetrag</th></tr>
+<t:loop source="kontoauszug" value="zwischenbetrag" index="monatIndex">
+<t:if test="showResult">
+<tr><td>${convertToTime( monatIndex )}</td><td>${convertToCurrency(zwischenbetrag)}€</td></tr>
+</t:if>
+</t:loop>
+</table></div>
 
 <p>	
 	Kredit ist getilgt nach ${kreditrechner.count} Monaten (=${convertToYear(kreditrechner.count)} Jahre). <br />
@@ -63,5 +64,5 @@
 </div>
 
 </div>
-</body>
+
 </t:border>
