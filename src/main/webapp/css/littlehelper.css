@@ -28,6 +28,18 @@ body {
 	float: left;
 	border-top: 1px solid #999;
 	border-bottom: 1px solid #999;
+	vertical-align: middle;
+}
+
+#navigation ul {
+	display: inline-block;
+	list-style-type: none;
+}
+
+#navigation li {
+	display: inline-block;
+	margin: 0.5em;
+	padding-right: 0.5em;
 }
 
 #content {
@@ -91,11 +103,6 @@ a:link {
 
 a:hover, a:active, a:focus {
 	color: #1cb727;
-	text-decoration: none;
-}
-
-a:visited {
-	color: #909090;
 	text-decoration: none;
 }
 

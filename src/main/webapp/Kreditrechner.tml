@@ -1,16 +1,5 @@
-<t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter">
+<t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter" title="Kreditrechner" sidebar="sidebar">
 
-<div id="wrap">
-
-<div id="header">
-<h1>Kreditrechner</h1>
-</div>
-
-<div id="navigation">
-<p><t:pagelink page="Index">Home</t:pagelink></p>
-</div>
-
-<div id="content">
 <p>Berechnung der Rate und Laufzeit eines Kredits</p>
 
 <p class="errormessage">${errorMessage}</p>
@@ -56,13 +45,9 @@
 	Insgesamt bezahlt: ${convertToCurrency( kreditrechner.bezahlt )}€ <br />
 </p>
 </t:if>
-</div>
 
-<div id="sidebar">
-<p><t:actionlink t:id="reset">Reset</t:actionlink></p>
-<p>controls</p>
-</div>
-
-</div>
+<t:block t:id="sidebar">
+    <p><t:actionlink t:id="reset">Reset</t:actionlink></p>
+</t:block>
 
 </t:border>
