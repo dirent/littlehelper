@@ -1,0 +1,6 @@
+<ul xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+    <li><t:pagelink page="jetspeed1/home" id="homelink">Home</t:pagelink></li>
+    <li><a href="" id="messaginglink">Messaging</a> TODO: /messaging.Messaging</li>
+    <li><a href="" id="preferenceslink">Preferences</a> TODO: /Preferences</li>
+    <li><t:pagelink page="jetspeed1/about" id="aboutlink">About</t:pagelink></li>
+</ul>

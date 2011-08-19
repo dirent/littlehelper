@@ -1,0 +1,73 @@
+#content {
+	background-color: white;
+	color: #000000;
+}
+
+#content:link {
+	color: #006699;	
+}
+
+#content:visited {
+	color: #006699;	
+}
+
+#content a:active {
+	color: #006699;	
+}
+
+#content div {
+	margin-top: 0;
+	margin-left: 4px;
+}
+
+#content p {
+	margin-top: 0;
+}
+
+#sidebar {
+	padding: 0;
+	background-color: #ffffff;
+	color: #000000;
+}
+
+#sidebar:link {
+	color: #006699;	
+}
+
+#sidebar:visited {
+	color: #006699;	
+}
+
+#sidebar a:active {
+	color: #006699;	
+}
+
+#sidebar ul {
+	list-style-type: none;
+	margin-top: 2px;
+	padding-left: 0.5em;
+}
+
+#sidebar li {
+	height: 25px;
+}
+
+#homelink {
+    background: url(../jetspeed1/images/misc-folders/home.gif) left top no-repeat;
+    padding-left: 24px;
+}
+
+#messaginglink {
+    background: url(../jetspeed1/images/folder.gif) left top no-repeat;
+    padding-left: 24px;
+}
+
+#preferenceslink {
+    background: url(../jetspeed1/images/folder.gif) left top no-repeat;
+    padding-left: 24px;
+}
+
+#aboutlink {
+    background: url(../jetspeed1/images/misc-folders/dep.gif) left top no-repeat;
+    padding-left: 24px;
+}

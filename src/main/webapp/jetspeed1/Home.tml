@@ -1,0 +1,7 @@
+<t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter" title="Jetspeed 1 - History" sidebar="sidebar">
+
+<t:block t:id="sidebar"><t:jetspeed1sidebar /></t:block>
+
+<p>TODO: Start with Home.genPageRight(request, response, out);</p>
+
+</t:border>

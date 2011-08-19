@@ -23,6 +23,7 @@ public class Border {
 		
 		pageNameMap.put( "Index", "Home" );
 		pageNameMap.put( "Kreditrechner", "Kreditrechner" );
+		pageNameMap.put( "jetspeed1/Home", "Jetspeed 1" );
 	}
 	
 
@@ -57,6 +58,13 @@ public class Border {
 	private ComponentResources resources;
 	
 	public boolean isDisabled() {
+		
+		int slash = pageName.lastIndexOf( '/' ); 
+		if( slash > 0 ) {
+			
+			// look for same base package
+			return resources.getPageName().startsWith( pageName.substring( 0, slash ) );
+		}
 		
 		return resources.getPageName().equals( pageName );
 	}
