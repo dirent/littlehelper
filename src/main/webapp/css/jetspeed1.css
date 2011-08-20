@@ -24,18 +24,28 @@
 	margin-top: 0;
 }
 
+.WELCOMETITLE {
+	color: white;
+	background: #666666;
+	font-weight: bold;
+}
+
 #sidebar {
 	padding: 0;
 	background-color: #ffffff;
 	color: #000000;
 }
 
-#sidebar:link {
-	color: #006699;	
+#sidebar a:link {
+	color: navy;
+	font-size: 10pt;
+	font-weight: bold;	
 }
 
-#sidebar:visited {
-	color: #006699;	
+#sidebar a:visited {
+	color: black;
+	font-size: 10pt;
+	font-weight: bold;	
 }
 
 #sidebar a:active {
