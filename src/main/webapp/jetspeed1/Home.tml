@@ -1,7 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter" title="Jetspeed 1 - History" sidebar="sidebar">
 
 <t:block t:id="sidebar"><t:jetspeed1sidebar /></t:block>
 
-<p>TODO: Start with Home.genPageRight(request, response, out);</p>
+<div id="ROOT">
+<br />
+<center>
+<table cellpadding="0" cellspacing="0" border="0" width="95%" height="100%" bgcolor="#ffffff" align="CENTER">
+<tr>
+	<td valign="top" align="center">
+		<!-- BEGIN WELCOME BAR -->
+		<br />
+		<table width="95%" cellpadding="3" border="0" cellspacing="0">
+		<tr>
+			<td class="WELCOMETITLE">&nbsp;Welcome to ${message:jetspeed1.product} &gt; Home </td>
+		</tr>
+		<tr>
+			<td bgcolor="silver">&nbsp;${niceDate}</td>
+		</tr>
+		</table>
+		<br />
+	</td>
+</tr>
+<tr>
+<td valign="top" align="center">TODO: Start with Home.genSearchEngine( out );</td>
+</tr>
+</table>
+</center>
+</div>
 
 </t:border>
