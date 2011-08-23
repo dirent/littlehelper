@@ -8,14 +8,14 @@ body {
 }
 
 #wrap {
-	width: 1060px;
+	width: 960px;
 	margin: 0 auto;
 	padding: 4px;
 	text-align: left;
 }
 
 #header {
-	width: 1060px;
+	width: 960px;
 	height: 80px;
 	float: left;
 	text-align: right;
@@ -23,7 +23,7 @@ body {
 }
 
 #navigation {
-	width: 1060px;
+	width: 960px;
 	height: 40px;
 	float: left;
 	border-top: 1px solid #999;
@@ -44,7 +44,7 @@ body {
 }
 
 #content {
-	width: 859px;
+	width: 759px;
 	height: 400px;
 	float: left;
 	border-right: 1px solid #999;

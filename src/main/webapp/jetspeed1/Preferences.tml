@@ -1,0 +1,17 @@
+<t:border xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter" title="Jetspeed 1 - History" sidebar="sidebar">
+
+<t:block t:id="sidebar"><t:jetspeed1sidebar /></t:block>
+
+<div>
+
+<br />
+
+<img src="${context:jetspeed1/images/microphone.gif}" align="left" />
+
+<h2>This feature is currently not implemented in <a href="${message:jetspeed1.url.jetspeed.home}">${message:jetspeed1.product}</a>.</h2>
+
+<p>${message:jetspeed1.product.mantra}</p>
+
+</div>
+
+</t:border>
