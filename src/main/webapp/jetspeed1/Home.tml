@@ -23,7 +23,24 @@
 	</td>
 </tr>
 <tr>
-<td valign="top" align="center">TODO: Start with Home.genSearchEngine( out );</td>
+	<td valign="top" align="center">
+		<!-- BEGIN SEARCH ENGINE -->
+		TODO: Generate Javascript-Menu with jsSupport.addScript(..) (Home.java line 141-188)
+		<table bgcolor="#cccccc" border="0" cellpadding="1" cellspacing="0" width="320" align="center">
+		<tr>
+			<td>
+				<table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff" width="320">
+				<tr>
+					<td bgcolor="#dddddd" nowrap="true"><b>Search</b></td>
+				</tr>
+				<tr>
+					<td>TODO: Continue Home.genSearchEngine( out ) line 210;</td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+		</table>		
+	</td>
 </tr>
 </table>
 </center>
