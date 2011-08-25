@@ -6,7 +6,7 @@
 <div id="ROOT">
 <br />
 <center>
-<table cellpadding="0" cellspacing="0" border="0" width="95%" height="100%" bgcolor="#ffffff" align="CENTER">
+<table cellpadding="0" cellspacing="0" border="0" width="95%" bgcolor="#ffffff" align="CENTER">
 <tr>
 	<td valign="top" align="center">
 		<!-- BEGIN WELCOME BAR -->
@@ -34,7 +34,20 @@
 					<td bgcolor="#dddddd" nowrap="true"><b>Search</b></td>
 				</tr>
 				<tr>
-					<td>TODO: Continue Home.genSearchEngine( out ) line 210;</td>
+					<td>
+                        <t:form t:id="search"><table>
+                        <tr>
+                            <td nowrap="true"><t:label for="searchString"/>:</td>
+                            <td><t:textfield t:id="searchString" label="Search the web for" value="searchString" name="search_string" validate="required" /></td>
+                        </tr>
+                        <tr>
+                            <td><t:submit value="Search" /></td>
+                            <td align="right" nowrap="true">
+                                <a href="javascript:showMenu( 'infoforyou' )" onMouseOut="javascript:hideMenu( 'infoforyou' )"><img name="SEARCH_IMG" src="${context:jetspeed1/images/search/yahoo.gif}" width="100" height="30" border="0" /></a>
+                            </td>
+                        </tr>
+                        </table></t:form>
+                    </td>
 				</tr>
 				</table>
 			</td>

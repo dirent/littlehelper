@@ -2,10 +2,22 @@ package de.dirent.littlehelper.pages.jetspeed1;
 
 
 import org.apache.tapestry5.annotations.Import;
+import org.apache.tapestry5.annotations.Persist;
+import org.apache.tapestry5.annotations.Property;
 
 
 @Import( stylesheet = { "context:/css/littlehelper.css", "context:/css/jetspeed1.css" } )
 public class Home {
+	
+	@Property @Persist
+	private String searchString;
+	
+	
+	public void onSuccessFromSearch() {
+		
+		System.out.println( "Search string: " + searchString );
+	}
+	
 	
 	/**
 	 * Originally from Util.getNiceDate()

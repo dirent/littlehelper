@@ -26,6 +26,11 @@
 	margin-left: 0;	
 }
 
+#content table {
+	margin: 1px;
+	text-align: left;
+}
+
 #content p {
 	margin-top: 0;
 }
