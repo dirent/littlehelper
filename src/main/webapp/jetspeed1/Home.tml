@@ -35,7 +35,7 @@
 				</tr>
 				<tr>
 					<td>
-                        <t:form t:id="search"><table>
+                        <t:form t:id="search" target="searchcontent"><table>
                         <tr>
                             <td nowrap="true"><t:label for="searchString"/>:</td>
                             <td><t:textfield t:id="searchString" label="Search the web for" value="searchString" name="search_string" validate="required" /></td>
@@ -46,7 +46,7 @@
                                 <a href="javascript:showMenu( 'infoforyou' )" onMouseOut="javascript:hideMenu( 'infoforyou' )"><img name="SEARCH_IMG" src="${context:jetspeed1/images/search/yahoo.gif}" width="100" height="30" border="0" /></a>
                             </td>
                         </tr>
-                        </table></t:form>
+                        </table><t:hidden t:id="searchEngineId" value="searchEngineId" /></t:form>
                     </td>
 				</tr>
 				</table>
@@ -56,6 +56,7 @@
 	</td>
 </tr>
 </table>
+<iframe src="" name="searchcontent" style="width: 90%; border: 1px solid blue; margin: 0.5em;" />
 </center>
 </div>
 
