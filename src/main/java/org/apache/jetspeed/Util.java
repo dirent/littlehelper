@@ -119,7 +119,9 @@ public class Util  {
     public final static   String    ERROR_LOGON_FAILED                = "It appears your logon has failed.  Please check your username and or password.";
     public final static   String    ERROR_CONNECTION_FAILED           = "Could not connect to the host you specified.  Please make sure you specified the right hostname and that it is available and running the specified service.";
 
+    public final static   String    ERROR_INVALID_PROVIDER            = "The provider you selected is invalid.  This is most likely because the servers classpath is incorrect.  Please contact the server admin.";
 
+    
     /**
     The full <A> tag for this product.
     */
