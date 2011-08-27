@@ -45,9 +45,6 @@ public class Util  {
                                                                         "Exchange and portal sites like DejaNews/Hotmail/Yahoo, etc.";
 
 
-
-
-
     //FIX ME: Why can't I get this to compile under PRODUCT_AUTHORS?                                                                        
     public static URLStore burtons[] = {
                                         new URLStore("JetSpeed", URL_JETSPEED_HOME),
@@ -634,4 +631,12 @@ class Authors {
     return first + " " + last;
   }
 
+  //****************************************************************************
+  public static class RESOURCES {
+    public static class JAVASCRIPT {
+      public static String DELETE_MESSAGES = Util.JETSPEED_JS_ROOT + "delete_messages.js";
+    }
+  }
+
+  
 }
