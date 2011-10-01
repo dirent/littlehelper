@@ -13,7 +13,7 @@ public class MultiRenamer {
     
     public static void main( String[] args ) {
         
-        String rootPath = "G:\\Dokumente und Einstellungen\\dirk\\Desktop\\fotos\\12160715";
+        String rootPath = "/home/dirk/Desktop/070730";
 
         String sourceSuffix = ".JPG";
         String targetSuffix = ".jpg";
@@ -21,12 +21,12 @@ public class MultiRenamer {
         String sourcePrefix = "PICT";
         StrictDecimalFormat sourceIndexFormatter = new StrictDecimalFormat( Locale.getDefault(), "0000" );
         
-        int startIndex = 22;
-        int endIndex = 34;
+        int startIndex = 13;
+        int endIndex = 46;
         
-        String targetPrefix = "160 - Marine Rubicon";
+        String targetPrefix = "mosel070730_";
         StrictDecimalFormat targetIndexFormatter = new StrictDecimalFormat( Locale.getDefault(), "00" );
-        int targetIndex = 1;
+        int targetIndex = 8;
         
         for( int i=startIndex; i<=endIndex; i++ ) {
         	
