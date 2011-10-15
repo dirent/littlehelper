@@ -42,12 +42,8 @@ public class RandomFileChooser {
 			searchForFiles( root );
 
 			System.out.println( root.getName() + " contains " + fileCount + " files." );
-
-			for( int i=0; i<13; i++ ) {
-				Math.random();
-			}
 			
-			int index = (int) Math.round( Math.random() * (fileCount+1) );
+			int index = (int) Math.floor( Math.random() * fileCount );
 			File sourceFile = new File( (String) files.get( new Integer( index ) ) );
 			System.out.println( "The " + index + "th file is " + sourceFile.getAbsolutePath() );
 			
@@ -90,12 +86,16 @@ public class RandomFileChooser {
 		}
 		
 		for( int i=0; i<children.length; i++ ) {
+			
 			File child = new File( root, children[i] );
-			if( child.isDirectory() ) {
-				searchForFiles( child );
-				continue;
-			}
-			files.put( new Integer(fileCount++), child.getAbsolutePath() );
+            if( child.isDirectory() ) {
+
+                searchForFiles( child );
+
+            } else {
+
+                files.put( new Integer(fileCount++), child.getAbsolutePath() );
+            }
 		}
 	}
 }
