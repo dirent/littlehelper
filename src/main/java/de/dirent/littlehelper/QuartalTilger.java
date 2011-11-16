@@ -9,9 +9,6 @@ import java.util.Locale;
 
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
-import org.joda.time.Months;
-import org.joda.time.Period;
-import org.joda.time.PeriodType;
 
 public class QuartalTilger {
 
@@ -31,29 +28,60 @@ public class QuartalTilger {
 		
 		NumberFormat nf = NumberFormat.getPercentInstance( Locale.GERMAN );
 		nf.setMaximumFractionDigits(2);
-		DateFormat df = new SimpleDateFormat( "MM/yyyy" ); 
 		
-		System.out.println( "Nächste Rate: " + tilger.getNextRate() );
+		System.out.println( "Startkredit: " + tilger.getRest() + "€" );
+		System.out.println( "Tilgung pro Quartal: " + tilger.getTilgung() + "€; Zinsen: " + nf.format(tilger.getZinssatz()) );
+		System.out.println( "---------------------------------------------------------------------------" );
+		while( !tilger.isGetilgt() ) {
+			
+			System.out.print( "[" + tilger.getZahltag().toString( "dd.MM.yyyy" ) + "]: " + tilger.getNextRate() + "€  (Zinsen: " + tilger.getQuartalsZins() + "€" );
+			tilger.tilge();
+			System.out.println( "; Restsumme: " + tilger.getRest() + "€)" );
+		}
 	}
 	
-	
-	private Period quartal = new Period( Months.THREE );
 	private LocalDate today;
 	private double rest;
 	private double tilgung;
-	private double zins;
+	private double zinssatz;
 	
-	public QuartalTilger( int kredit, double tilgung, double zins, Calendar today ) {
+	public QuartalTilger( int kredit, double tilgung, double zinssatz, Calendar today ) {
 		
 		this.rest = kredit;
 		this.tilgung = tilgung;
-		this.zins = zins;
+		this.zinssatz = zinssatz;
 		this.today = new LocalDate( today.getTimeInMillis() );
+	}
+	
+	public void tilge() {
+	
+		rest -= getTilgung();
+		today = getNextQuartalStart();
+	}
+	
+	public LocalDate getZahltag() {
+	
+		return getNextQuartalStart().minusDays(1);
+	}
+	
+	public boolean isGetilgt() {
+		
+		return rest <= 0.0;
+	}
+	
+	public double getRest() {
+		
+		return Math.round( rest*100.0 ) / 100.0;
+	}
+	
+	public double getZinssatz() {
+		
+		return this.zinssatz;
 	}
 	
 	public double getQuartalsZins() {
 
-		double qz = rest * zins * getDaysToQuartalEnd()/365.0;
+		double qz = rest * zinssatz * getDaysToQuartalEnd()/365.0;
 		
 		return Math.round( 100.0*qz)/100.0;
 	}
@@ -90,6 +118,6 @@ public class QuartalTilger {
 	
 	public double getNextRate() {
 		
-		return this.tilgung + getQuartalsZins();
+		return Math.round( 100.0 * (Math.min( getRest(), getTilgung() ) + getQuartalsZins()) ) / 100.0;
 	}
 }
