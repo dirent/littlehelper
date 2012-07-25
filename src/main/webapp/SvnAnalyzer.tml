@@ -1,6 +1,28 @@
 <t:border  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter" sidebar="sidebar">
 
-<p>Analyzer für Subversion Repositories</p>
+	<p>Analyzer für Subversion Repositories</p>
+
+    <p>Geben Sie die Root-URL Ihres Repositories ein und los gehts ...</p>
+    
+    <t:form autofocus="true" t:id="analyze" t:zone="repositoryZone">
+	<p><table>
+		<tr><td>Repository Url:</td>  <td><t:textfield t:id="repositoryUrl" validate="required" size="64" /></td></tr>
+		<tr><td>Username:</td>        <td><t:textfield t:id="username" size="16" /></td></tr>
+		<tr><td>Password:</td>        <td><t:passwordfield t:id="password" size="16" /></td></tr>
+	</table></p>
+	<p><t:submit t:id="send" value="Senden" /></p>
+	</t:form>
+	
+	<t:alerts />
+
+	<t:zone t:id="repositoryZone" id="repositoryZone" t:visible="false">
+	<t:progressivedisplay t:id="repositoryLoader" update="blindup">
+	  
+		<p>Aktuelles Repository: ${repository.repositoryUrl}</p>
+		<p>Uuid: ${repository.repositoryUUID}; Latest Revision: ${repository.latestRevision}</p>
+		
+	</t:progressivedisplay>
+	</t:zone>
 
 <t:block t:id="sidebar">
     <p>Hier ist Platz für globale Controls.</p>
