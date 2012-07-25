@@ -24,10 +24,11 @@ public class Border {
 		pageNameMap.put( "Index", "Home" );
 		pageNameMap.put( "Kreditrechner", "Kreditrechner" );
 		pageNameMap.put( "jetspeed1/Home", "Jetspeed 1" );
+		pageNameMap.put( "SvnAnalyzer", "Subversion Analyzer" );
+		pageNameMap.put( "MediawikiScanner", "Mediawiki Scanner" );
 	}
 	
 
-	@SuppressWarnings( "unused" )
 	@Parameter( required=false, defaultPrefix="literal" ) @Property
 	private String title = "Little Helper";
 	

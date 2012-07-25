@@ -1,9 +1,9 @@
 <t:border  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter" sidebar="sidebar">
 
-<p>'Little Helper' ist eine Sammlung nützlicher kleiner Werkzeuge.</p>
+<p>Scanner für Wikis, die auf <a href="http://www.mediawiki.org/">Mediawiki</a> basieren</p>
 
 <t:block t:id="sidebar">
-    <p><t:actionlink t:id="myip">IP Detektor</t:actionlink></p>
+    <p>Hier ist Platz für globale Controls.</p>
 </t:block>
 
 </t:border>
