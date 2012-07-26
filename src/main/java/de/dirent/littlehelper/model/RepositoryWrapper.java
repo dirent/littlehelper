@@ -59,62 +59,27 @@ public class RepositoryWrapper implements Serializable {
 	}
 
 
-	public String getRepositoryUrl() {
+	public SVNURL getRepositoryRoot() throws SVNException {
 		
-		return this.repositoryUrl;
+		if( this.repository == null ) setUpRepository();
+		
+		return this.repository.getRepositoryRoot(true);
 	}
 	
 	
-	public SVNURL getRepositoryRoot() {
+	public String getRepositoryUUID() throws SVNException {
 		
-		try {
-			
-			if( this.repository == null ) setUpRepository();
-			
-			return this.repository.getRepositoryRoot(true);
-			
-		} catch( SVNException svne ) {
-			
-			// TODO: handle exception
-			svne.printStackTrace();
-			return null;
-		}
+		if( this.repository == null ) setUpRepository();
+		
+		return this.repository.getRepositoryUUID(true);
 	}
 	
 	
-	public String getRepositoryUUID() {
+	public long getLatestRevision() throws SVNException {
 		
-		try {
-			
-			if( this.repository == null ) setUpRepository();
-			
-			return this.repository.getRepositoryUUID(true);
-			
-		} catch( SVNException svne ) {
-			
-			// TODO: handle exception
-			svne.printStackTrace();
-		}
+		if( this.repository == null ) setUpRepository();
 		
-		return "unknown";
-	}
-	
-	
-	public long getLatestRevision() {
-		
-		try {
-			
-			if( this.repository == null ) setUpRepository();
-			
-			return this.repository.getLatestRevision();
-			
-		} catch( SVNException svne ) {
-			
-			// TODO: handle exception
-			svne.printStackTrace();
-		}
-		
-		return 0;
+		return this.repository.getLatestRevision();
 	}
 	
 	

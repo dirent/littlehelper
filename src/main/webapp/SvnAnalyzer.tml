@@ -16,16 +16,16 @@
 	<t:alerts />
 
 	<t:zone t:id="repositoryZone" id="repositoryZone" t:visible="false">
-	<t:progressivedisplay t:id="repositoryLoader" update="blindup">
+	<t:progressivedisplay t:id="repositoryLoader" update="blindup"><t:if test="repositoryInitialized">
 	  
-		<p>Aktuelles Repository: ${repository.repositoryUrl}</p>
-		<p>Uuid: ${repository.repositoryUUID}; Latest Revision: ${repository.latestRevision}</p>
+		<p>Aktuelles Repository: ${repositoryRoot}</p>
+		<p>Uuid: ${repositoryUUID}; Latest Revision: ${latestRevision}</p>
 		
-	</t:progressivedisplay>
+	</t:if></t:progressivedisplay>
 	</t:zone>
 
 <t:block t:id="sidebar">
-    <p>Hier ist Platz für globale Controls.</p>
+    <p><t:actionlink t:id="reset">Reset</t:actionlink></p>
 </t:block>
 
 </t:border>
