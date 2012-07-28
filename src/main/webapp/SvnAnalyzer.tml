@@ -21,6 +21,38 @@
 		<p>Aktuelles Repository: ${repositoryRoot}</p>
 		<p>Uuid: ${repositoryUUID}; Latest Revision: ${latestRevision}</p>
 		
+		<t:form t:id="revisionForm" t:zone="revisionZone" >
+			<p>Zu analysierende Revision: <t:textfield t:id="revision" validate="required,min=1" size="8" /></p>
+		</t:form>
+		
+		
+		<t:zone t:id="revisionZone" id="revisionZone" t:visible="false">
+			<t:progressivedisplay t:id="revisionLoader" t:context="[changedPathType,changedPathPath]" update="blindup">
+			<t:if test="revisionOutOfRange">
+			<p>Revision ${revision} gibt es noch nicht.</p>
+			</t:if>
+		  	<p style="border-bottom:1px dotted darkgray; padding-bottom:0.2em">Änderungen in Revision ${revision}.</p>
+		  	<t:if test="logEntry">
+		  	<table cellpadding="3">
+		  		<tr><td>Author:</td><td>${logEntry.author}</td></tr>
+		  		<tr><td>Date:</td><td>${logEntry.date}</td></tr>
+		  		<tr style="vertical-align:top;"><td>Log&nbsp;Message:</td><td>${logEntry.message}</td></tr>
+		  	</table>
+			<div style="margin-top:0.5em;">Changed Paths:</div>
+		  	<table cellpadding="2"><t:loop source="changedPaths" value="changedPath">
+		  	<tr><td style="font-weight:bold;">${changedPathType}</td>
+		  	    <td><t:actionlink t:zone="diffZone" t:context="[changedPathType,changedPathPath]">${changedPathPath}</t:actionlink></td>
+		  	    <td style="font-weight:bold;">${changedPathCopyInfo}</td>
+		  	</tr>
+		  	</t:loop></table>
+			</t:if>
+		
+			<p><t:zone t:id="diffZone" id="diffZone" t:visible="false" style="height:300px; overflow:scroll; font-size:75%; border:1px dotted gray; padding:1em;">
+			</t:zone></p>
+
+		</t:progressivedisplay>
+		</t:zone>
+
 	</t:if></t:progressivedisplay>
 	</t:zone>
 

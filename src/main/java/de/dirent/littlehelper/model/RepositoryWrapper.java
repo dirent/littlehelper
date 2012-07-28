@@ -100,20 +100,11 @@ public class RepositoryWrapper implements Serializable {
 			long startRevision, 
 			long endRevision, 
 			boolean changedPath,
-			boolean strictNode) {
+			boolean strictNode) throws SVNException {
 		
-		try {
-			
-			if( this.repository == null ) setUpRepository();
-			
-			return this.repository.log( targetPaths, entries, startRevision, endRevision, changedPath, strictNode );
-			
-		} catch( SVNException svne ) {
-			
-			// TODO: handle exception
-			svne.printStackTrace();
-			return new ArrayList<SVNLogEntry>();
-		}
+		if( this.repository == null ) setUpRepository();
+		
+		return this.repository.log( targetPaths, entries, startRevision, endRevision, changedPath, strictNode );
 	}
 	
 

@@ -1,6 +1,8 @@
 package de.dirent.littlehelper.pages;
 
 
+import java.util.Collection;
+
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.alerts.Duration;
 import org.apache.tapestry5.alerts.Severity;
@@ -15,6 +17,9 @@ import org.apache.tapestry5.ioc.internal.util.InternalUtils;
 import org.apache.tapestry5.services.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tmatesoft.svn.core.SVNException;
+import org.tmatesoft.svn.core.SVNLogEntry;
+import org.tmatesoft.svn.core.SVNLogEntryPath;
 
 import de.dirent.littlehelper.model.RepositoryWrapper;
 
@@ -51,6 +56,7 @@ public class SvnAnalyzer {
 	
 	
 	@Property @Persist
+	@SuppressWarnings( "unused" )
 	private boolean repositoryInitialized;
 	
 
@@ -153,5 +159,83 @@ public class SvnAnalyzer {
 			
 			this.repositoryInitialized = false;
 		}
+	}
+
+
+
+	public long getRevision() {
+		
+		return this.repository.getRevision();
+	}
+	
+	public void setRevision( long revision ) {
+		
+		this.repository.setRevision(revision);
+	}
+
+
+	@InjectComponent
+	private Zone revisionZone;
+	
+	public Object onSubmitFromRevisionForm() {
+		
+		return revisionZone.getBody();
+	}
+	
+	@Property
+	private SVNLogEntry logEntry;
+	
+	public void onProgressiveDisplayFromRevisionLoader() {
+		
+		try {
+			
+			Collection<SVNLogEntry> logEntries = 
+					repository.log( new String[] {""}, null, repository.getRevision(), repository.getRevision(), true, true );
+
+			if( logEntries.size() == 1 ) {
+				this.logEntry = logEntries.iterator().next();
+			}
+			
+		} catch( SVNException svn ) {
+			
+			String message = "Could not log for revision " + repository.getRevision() + ": " + svn.getMessage();
+			logger.warn( message );
+			alertManager.alert( Duration.TRANSIENT, Severity.WARN, message );
+		}
+	}
+	
+	
+	public boolean getRevisionOutOfRange() {
+		
+		return getRevision() < 1  ||  getRevision() > getLatestRevision();
+	}
+	
+
+	@Property
+	private SVNLogEntryPath changedPath;
+	
+	@SuppressWarnings("unchecked")
+	public Collection<SVNLogEntryPath> getChangedPaths() {
+		
+		return logEntry.getChangedPaths().values();
+	}
+	
+	public char getChangedPathType() {
+		
+		if( changedPath == null ) return ' ';
+		return changedPath.getType();
+	}
+	
+	public String getChangedPathPath() {
+		
+		if( changedPath == null ) return "";
+		return changedPath.getPath();
+	}
+	
+	public String getChangedPathCopyInfo() {
+		
+		return ( ( changedPath.getCopyPath( ) != null ) ? " (from "
+				+ changedPath.getCopyPath( ) + " revision "
+				+ changedPath.getCopyRevision( ) + ")" : "" );
 	}
 }
