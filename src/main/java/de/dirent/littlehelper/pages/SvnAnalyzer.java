@@ -1,6 +1,9 @@
 package de.dirent.littlehelper.pages;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 
 import org.apache.tapestry5.alerts.AlertManager;
@@ -20,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.tmatesoft.svn.core.SVNException;
 import org.tmatesoft.svn.core.SVNLogEntry;
 import org.tmatesoft.svn.core.SVNLogEntryPath;
+import org.tmatesoft.svn.core.SVNURL;
 
 import de.dirent.littlehelper.model.RepositoryWrapper;
 
@@ -56,7 +60,6 @@ public class SvnAnalyzer {
 	
 	
 	@Property @Persist
-	@SuppressWarnings( "unused" )
 	private boolean repositoryInitialized;
 	
 
@@ -237,5 +240,67 @@ public class SvnAnalyzer {
 		return ( ( changedPath.getCopyPath( ) != null ) ? " (from "
 				+ changedPath.getCopyPath( ) + " revision "
 				+ changedPath.getCopyRevision( ) + ")" : "" );
+	}
+
+
+
+	@Property
+	private String diffOutput;
+	
+	@InjectComponent
+	private Zone diffZone;
+	
+	
+	public Object onAction( String changedPathType, String changedPathPath ) {
+		
+		this.changedPath = new SVNLogEntryPath( changedPathPath, changedPathType.charAt(0), null, 0L );
+		
+		return diffZone.getBody();
+	}
+	
+	
+	public void onProgressiveDisplayFromDiffLoader( String changedPathType, String changedPathPath ) {
+		
+		try {
+
+			SVNURL root = repository.getRepositoryRoot();
+			if( root != null ) {
+				
+				try {
+					
+					ByteArrayOutputStream out = new ByteArrayOutputStream(512);
+					SVNURL diffUrl = root.appendPath( changedPathPath, false );
+					
+					if( "A".equals( changedPathType ) ) {
+						
+						String intro = "New Entry " + changedPathPath + ":\n";
+						intro += "===================================================================\n";
+						
+						try {
+							out.write( intro.getBytes() );
+						} catch( IOException io ) {}
+						
+						repository.getFile( changedPathPath, out );
+						
+					} else {
+	
+						repository.doDiff( diffUrl, out );
+					}
+					
+					try {
+						diffOutput = new String( out.toByteArray(), "UTF-8" );
+					} catch( UnsupportedEncodingException e ) {}
+	
+				} catch( SVNException svne ) {
+					svne.printStackTrace();
+				}
+			}
+			
+		} catch( SVNException svn ) {
+			
+			String message = "Could not load diff for " + changedPath + ": " + svn.getMessage();
+			logger.warn( message );
+			alertManager.alert( Duration.TRANSIENT, Severity.WARN, message );
+		}
 	}
 }

@@ -48,6 +48,9 @@
 			</t:if>
 		
 			<p><t:zone t:id="diffZone" id="diffZone" t:visible="false" style="height:300px; overflow:scroll; font-size:75%; border:1px dotted gray; padding:1em;">
+			<t:progressivedisplay t:id="diffLoader" t:context="[changedPathType,changedPathPath]" update="blindup">
+			<t:if test="diffOutput"><pre>${diffOutput}</pre></t:if>
+			</t:progressivedisplay>	
 			</t:zone></p>
 
 		</t:progressivedisplay>
