@@ -1,9 +1,35 @@
 <t:border  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd" xmlns:p="tapestry:parameter" sidebar="sidebar">
 
-<p>Scanner für Wikis, die auf <a href="http://www.mediawiki.org/">Mediawiki</a> basieren</p>
+	<p>Scanner für Wikis, die auf <a href="http://www.mediawiki.org/">Mediawiki</a> basieren</p>
 
-<t:block t:id="sidebar">
-    <p>Hier ist Platz für globale Controls.</p>
-</t:block>
+    <p>Geben Sie die Root-URL Ihres Wikis ein und los gehts ...</p>
+    
+    <t:form autofocus="true" t:id="analyze" t:zone="wikiZone">
+	<p><table>
+		<tr><td>Url:</td>  <td><t:textfield t:id="wikiUrl" validate="required" size="64" /></td></tr>
+		<tr><td>Von Revision:</td>  <td><t:textfield t:id="fromRevision" validate="required,min=1" size="8" /></td></tr>
+		<tr><td>bis:</td>  <td><t:textfield t:id="toRevision" validate="required,min=1" size="8" /></td></tr>
+	</table></p>
+	<p><t:submit t:id="send" value="Senden" /></p>
+	</t:form>
+	
+	<t:alerts />
+
+	<t:zone t:id="wikiZone" id="wikiZone" t:visible="false">
+	<t:progressivedisplay t:id="wikiLoader" update="blindup"><t:if test="wikiInitialized">
+	  
+		<p>Aktuelles Wiki: <strong>${wikiTitle}</strong></p>
+		
+		<div class="resultpanel" id="resultpanel"><t:loop t:source="analysis" t:value="revision">
+		<p class="line">Revision ${revision.revisionNumber}: <strong>${revision.title}</strong></p>		
+		</t:loop></div>
+		
+	</t:if></t:progressivedisplay>
+	</t:zone>
+
+	
+	<t:block t:id="sidebar">
+	    <p><t:actionlink t:id="reset">Reset</t:actionlink></p>
+	</t:block>
 
 </t:border>

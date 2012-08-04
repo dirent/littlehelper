@@ -73,6 +73,10 @@ p, div.controlpanel {
 	margin: 15px 20px;
 }
 
+p.line {
+	margin: 4px;	
+}
+
 div.resultpanel {
 	margin: 15px 20px;
 	width: 75%;
