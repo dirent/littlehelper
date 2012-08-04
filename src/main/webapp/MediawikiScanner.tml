@@ -21,7 +21,11 @@
 		<p>Aktuelles Wiki: <strong>${wikiTitle}</strong></p>
 		
 		<div class="resultpanel" id="resultpanel"><t:loop t:source="analysis" t:value="revision">
-		<p class="line">Revision ${revision.revisionNumber}: <strong>${revision.title}</strong></p>		
+		<t:unless test="revision.deleted">
+			<p class="line">Revision ${revision.revisionNumber}: <strong>${revision.title}</strong></p>
+			<p class="subline">${revision.info}</p>
+			<p:else><p class="line">Revision ${revision.revisionNumber} wurde gelöscht.</p></p:else>
+		</t:unless>
 		</t:loop></div>
 		
 	</t:if></t:progressivedisplay>

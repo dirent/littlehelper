@@ -74,13 +74,19 @@ p, div.controlpanel {
 }
 
 p.line {
-	margin: 4px;	
+	margin: 6px;
+	font-size: 10px;	
+}
+
+p.subline {
+	margin: 4px;
+	font-size: 8px;	
 }
 
 div.resultpanel {
 	margin: 15px 20px;
 	width: 75%;
-	height: 100px;
+	height: 200px;
 	overflow: auto;
 }
 
