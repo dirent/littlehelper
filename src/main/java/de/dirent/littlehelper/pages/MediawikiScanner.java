@@ -96,11 +96,7 @@ public class MediawikiScanner {
 					
 					try {
 						
-						String oldid = this.wikiUrl;
-						if( !oldid.endsWith( "/" ) ) oldid += "/";
-						oldid += "?oldid=" + i;
-						
-						Document revision = Jsoup.connect( oldid ).get();
+						Document revision = Jsoup.connect( getRevisionUrl(i) ).get();
 						
 						this.analysis.add( new MediawikiRevision( i, revision ) );
 						
@@ -137,5 +133,20 @@ public class MediawikiScanner {
 		if( wiki != null ) return wiki.title();
 		
 		return "unknown";
+	}
+	
+	
+	public String getRevisionUrl() {
+
+		return getRevisionUrl( revision.getRevisionNumber() );
+	}
+	
+	protected String getRevisionUrl( int revisionNumber ) {
+		
+		String oldid = this.wikiUrl;
+		if( !oldid.endsWith( "/" ) ) oldid += "/";
+		oldid += "?oldid=" + revisionNumber;
+
+		return oldid;
 	}
 }

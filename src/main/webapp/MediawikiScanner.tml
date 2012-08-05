@@ -20,17 +20,16 @@
 	  
 		<p>Aktuelles Wiki: <strong>${wikiTitle}</strong></p>
 		
-		<div class="resultpanel" id="resultpanel"><t:loop t:source="analysis" t:value="revision">
+		<div class="resultpanel"><t:loop t:source="analysis" t:value="revision">
 		<t:unless test="revision.deleted">
-			<p class="line">Revision ${revision.revisionNumber}: <strong>${revision.title}</strong></p>
+			<p class="line">Revision ${revision.revisionNumber}: <strong><a href="${revisionUrl}" target="_blank">${revision.title}</a></strong></p>
 			<p class="subline">${revision.info}</p>
-			<p:else><p class="line">Revision ${revision.revisionNumber} wurde gelöscht.</p></p:else>
+			<p:else><p class="line">Revision ${revision.revisionNumber} wurde gelöscht / existiert nicht.</p></p:else>
 		</t:unless>
 		</t:loop></div>
 		
 	</t:if></t:progressivedisplay>
 	</t:zone>
-
 	
 	<t:block t:id="sidebar">
 	    <p><t:actionlink t:id="reset">Reset</t:actionlink></p>
