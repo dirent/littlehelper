@@ -1,5 +1,6 @@
 package de.dirent.littlehelper.model;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.nodes.Document;
 
 
@@ -17,6 +18,9 @@ public class MediawikiRevision {
 		this.revisionTitle = revision.title();
 		
 		this.revisionInfo = revision.select( "#mw-revision-info" ).text();
+		if( StringUtils.isBlank( this.revisionInfo ) ) {
+			this.revisionInfo = revision.select( "#mw-revision-info-current" ).text();
+		}
 	}
 	
 	
