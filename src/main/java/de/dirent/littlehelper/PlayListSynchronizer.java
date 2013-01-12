@@ -29,13 +29,14 @@ public class PlayListSynchronizer {
 
         File listing = null;
         StringBuffer playList = new StringBuffer();
-
+        Reader in = null;
+        
         try {
             
             File playlistFile = new File( playlistPath );
             listing = playlistFile.getParentFile();
             
-            Reader in = new FileReader( playlistFile );
+            in = new FileReader( playlistFile );
             char[] readBuffer = new char[2028];
             int read = in.read( readBuffer );
             while( read != -1 ) {
@@ -50,6 +51,10 @@ public class PlayListSynchronizer {
         } catch( IOException io ) {
             
             System.out.println( "Could not open playlist: " + io.getMessage() );
+            
+        } finally {
+        	
+        	if( in != null ) try { in.close(); } catch( IOException e ) {}
         }
         
         //System.out.println( "Playerlist read: " + playList );

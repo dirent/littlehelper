@@ -2,7 +2,6 @@ package de.dirent.littlehelper.model;
 
 import java.io.OutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.tmatesoft.svn.core.SVNDepth;

@@ -49,7 +49,7 @@ public class LogSorter {
 				
 				int revision = Integer.parseInt( revisionString.substring(1) );
 				
-				String author = t.nextToken().trim();
+				t.nextToken().trim();
 				
 				String dateString = t.nextToken().trim();
 				

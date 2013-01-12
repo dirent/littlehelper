@@ -19,7 +19,7 @@ public class ImageLinkGenerator {
         String rootPath = "E:\\projects\\digilib-content\\privat\\urlaub\\lanzarote2006";
         String base = "privat/urlaub/lanzarote2006/";
         
-        List contentFiles = Arrays.asList( new File(rootPath).list() );
+        List<String> contentFiles = Arrays.asList( new File(rootPath).list() );
         Collections.sort(contentFiles);
         
         for( int i=0; i<contentFiles.size(); i++ ) {

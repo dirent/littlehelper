@@ -20,7 +20,6 @@ import org.apache.tapestry5.services.javascript.JavaScriptSupport;
 
 
 @Import( stylesheet="context:/css/littlehelper.css" )
-@SuppressWarnings("unused")
 public class Kreditrechner {
 
 	@Property @Persist
