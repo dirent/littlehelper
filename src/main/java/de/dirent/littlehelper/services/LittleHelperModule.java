@@ -18,6 +18,8 @@ public class LittleHelperModule {
     	configuration.add( SymbolConstants.PRODUCTION_MODE, false );
     	configuration.add( SymbolConstants.COMBINE_SCRIPTS, true );    	
         configuration.add( SymbolConstants.MINIFICATION_ENABLED, true );
+
+        configuration.add( SymbolConstants.HMAC_PASSPHRASE, "öabe$%lMMcd!" );
     }
 
     
