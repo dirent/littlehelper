@@ -15,10 +15,7 @@ project.ext.versions = [
 repositories {
     mavenCentral()
 	
-	maven {
-		
-		url "file://" + System.getProperty( 'user.home' ) + "/.m2/repository"
-	}
+	mavenLocal()
 }
 
 dependencies {
