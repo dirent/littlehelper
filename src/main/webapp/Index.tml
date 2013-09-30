@@ -4,6 +4,7 @@
 
 <t:block t:id="sidebar">
     <p><t:actionlink t:id="myip">IP Detektor</t:actionlink></p>
+    <p><t:actionlink t:id="manifest">Cache Manifest</t:actionlink></p>
 </t:block>
 
 </t:border>
