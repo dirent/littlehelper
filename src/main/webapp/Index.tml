@@ -2,6 +2,18 @@
 
 <p>'Little Helper' ist eine Sammlung nützlicher kleiner Werkzeuge.</p>
 
+<fieldset>
+	<legend>Test auf Zweierpotenz</legend>
+	<t:form t:id="input" t:zone="inputZone">
+		<t:textfield t:value="input" t:validate="min=0" />
+		<t:submit t:value="Sende" />
+	</t:form>
+	<t:zone t:id="inputZone">
+		<t:if t:test="inputmessage">${inputmessage}</t:if>
+	</t:zone>
+</fieldset>
+
+
 <t:block t:id="sidebar">
     <p><t:actionlink t:id="myip">IP Detektor</t:actionlink></p>
     <p><t:actionlink t:id="manifest">Cache Manifest</t:actionlink></p>
