@@ -89,14 +89,14 @@ public class MediawikiScanner {
 
 			try {
 
-				this.wiki = Jsoup.connect( this.wikiUrl ).get();
+				this.wiki = Jsoup.connect( this.wikiUrl ).userAgent("Mozilla").get();
 				this.analysis = new ArrayList<MediawikiRevision>();
 				
 				for( int i=fromRevision; i<=toRevision; i++ ) {
 					
 					try {
 						
-						Document revision = Jsoup.connect( getRevisionUrl(i) ).get();
+						Document revision = Jsoup.connect( getRevisionUrl(i) ).userAgent("Mozilla").get();
 						
 						this.analysis.add( new MediawikiRevision( i, revision ) );
 						
