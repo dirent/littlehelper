@@ -2,9 +2,9 @@ package de.dirent.littlehelper.services;
 
 
 import org.apache.tapestry5.SymbolConstants;
-import org.apache.tapestry5.ioc.MappedConfiguration;
-import org.apache.tapestry5.ioc.OrderedConfiguration;
-import org.apache.tapestry5.services.ApplicationInitializerFilter;
+import org.apache.tapestry5.commons.MappedConfiguration;
+import org.apache.tapestry5.commons.OrderedConfiguration;
+import org.apache.tapestry5.http.services.ApplicationInitializerFilter;
 
 
 public class LittleHelperModule {
